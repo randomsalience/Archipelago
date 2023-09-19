@@ -59,7 +59,7 @@ base_location_data = [
     LocationData("Vann's Point", "Lynn Gift", 211,
                  lambda state, player: (state.has("Holy Relic", player) and state.has("Wedding Ring", player) and
                  state.has("Painting", player) and state.has("Silver Mirror", player))
-                 if state.multiworld.shuffle_grelin_drops[player] else state.prodigal_can_kill_grelins()),
+                 if state.multiworld.shuffle_grelin_drops[player] else state.prodigal_can_kill_grelins(player)),
     LocationData("Vann's Point", "Bolivar", 212,
                  lambda state, player: state.has("Shaedrite", player) and state.has("Drowned Ore", player) and
                  state.has("Miasmic Extract", player) and state.has("Broken Sword", player)),
