@@ -57,8 +57,9 @@ base_location_data = [
                  state.count("Cleated Boots", player) + state.count("Lucky Boots", player) + \
                  state.count("Boots of Graile", player) >= 4 and state.has("Old Hairpin", player)),
     LocationData("Vann's Point", "Lynn Gift", 211,
-                 lambda state, player: state.has("Holy Relic", player) and state.has("Wedding Ring", player) and
-                 state.has("Painting", player) and state.has("Silver Mirror", player)),
+                 lambda state, player: (state.has("Holy Relic", player) and state.has("Wedding Ring", player) and
+                 state.has("Painting", player) and state.has("Silver Mirror", player))
+                 if state.multiworld.shuffle_grelin_drops[player] else state.prodigal_can_kill_grelins()),
     LocationData("Vann's Point", "Bolivar", 212,
                  lambda state, player: state.has("Shaedrite", player) and state.has("Drowned Ore", player) and
                  state.has("Miasmic Extract", player) and state.has("Broken Sword", player)),
@@ -498,7 +499,8 @@ base_location_data = [
                  state.prodigal_has_key("Backrooms", player, 1) and state.has("Lariat", player)),
     LocationData("Backrooms", "Backrooms Crystal Chest", 81,
                  lambda state, player: state.has("Progressive Knuckle", player) and
-                 state.prodigal_has_key("Backrooms", player, 1) and state.has("Lariat", player)),
+                 state.prodigal_has_key("Backrooms", player, 1) and state.has("Lariat", player) and
+                 (state.prodigal_has_key("Backrooms", player, 2) or state.prodigal_has_ice_key(player))),
     LocationData("Backrooms", "Backrooms Mechanized Slot Machine", 73,
                  lambda state, player: state.has("Progressive Knuckle", player) and
                  (state.prodigal_has_key("Backrooms", player, 2) or state.prodigal_has_ice_key(player)) and
