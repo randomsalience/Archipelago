@@ -597,7 +597,7 @@ trade_location_data = [
 ]
 
 vanilla_trade_location_data = [
-    LocationData("Colorless Void", "Ulni Trade", 223,
+    LocationData("Colorless Void", "Trading Quest", 223,
                  lambda state, player: state.has("Lost Shipment", player) and state.has("Lariat", player)),
 ]
 
