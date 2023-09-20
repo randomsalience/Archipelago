@@ -43,7 +43,7 @@ class ProdigalWorld(World):
         return ProdigalItem(name, item_table[name].classification, prodigal_base_id + item_table[name].code, self.player)
 
     def get_filler_item_name(self):
-        return self.multiworld.random.choice(filler_items)
+        return self.random.choice(filler_items)
 
     def create_regions(self):
         create_and_connect_regions(self.multiworld, self.player)
@@ -127,4 +127,5 @@ class ProdigalWorld(World):
         for option_name in prodigal_options:
             option = getattr(self.multiworld, option_name)[self.player]
             slot_data[option_name] = option.value
+        slot_data["seed"] = self.random.randrange(2**31)
         return slot_data
