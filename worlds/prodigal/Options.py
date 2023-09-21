@@ -75,6 +75,10 @@ class ShuffleEnlightenment(Toggle):
     """Include Enlightenment in the pool."""
     display_name = "Shuffle Enlightenment"
 
+class ShuffleSecretShop(Toggle):
+    """Include Zaegul's Secret Shop in the pool."""
+    display_name = "Shuffle Secret Shop"
+
 class LongJumpsInLogic(Toggle):
     """The seed may require two-tile jumps with the flare knuckle. (This setting does not affect Enlightenment which necessarily requires such jumps.)"""
     display_name = "Long Jumps In Logic"
@@ -107,6 +111,7 @@ prodigal_options: Dict[str, AssembleOptions] = {
     "shuffle_hidden_items": ShuffleHiddenItems,
     "shuffle_daemons_dive": ShuffleDaemonsDive,
     "shuffle_enlightenment": ShuffleEnlightenment,
+    "shuffle_secret_shop": ShuffleSecretShop,
     "long_jumps_in_logic": LongJumpsInLogic,
     "start_with_spiced_ham": StartWithSpicedHam,
     "skip_one_small_favor": SkipOneSmallFavor,

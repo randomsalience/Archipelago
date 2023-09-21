@@ -65,6 +65,8 @@ class ProdigalWorld(World):
             location_data += enlightenment_location_data
         else:
             location_data += enlightenment_location_data[-1:]
+        if self.multiworld.shuffle_secret_shop[self.player]:
+            location_data += secret_shop_location_data
 
         for data in location_data:
             region = self.multiworld.get_region(data.region, self.player)
@@ -127,5 +129,5 @@ class ProdigalWorld(World):
         for option_name in prodigal_options:
             option = getattr(self.multiworld, option_name)[self.player]
             slot_data[option_name] = option.value
-        slot_data["seed"] = self.random.randrange(2**31)
+        slot_data["seed"] = self.random.randrange(1, 2**31)
         return slot_data

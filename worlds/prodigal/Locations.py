@@ -740,4 +740,13 @@ enlightenment_location_data = [
                  state.has("Progressive Hand", player, 2)),
 ]
 
-all_location_data = base_location_data + grelin_location_data + trade_location_data + hidden_location_data + daemons_dive_location_data + enlightenment_location_data
+secret_shop_location_data = [
+    LocationData("Tidal Mines", "Secret Shop Item 1", 245,
+                 lambda state, player: state.prodigal_can_reach_zaegul(player)),
+    LocationData("Tidal Mines", "Secret Shop Item 2", 246,
+                 lambda state, player: state.prodigal_can_reach_zaegul(player)),
+    LocationData("Tidal Mines", "Secret Shop Item 3", 247,
+                 lambda state, player: state.prodigal_can_reach_zaegul(player)),
+]
+
+all_location_data = base_location_data + grelin_location_data + trade_location_data + hidden_location_data + daemons_dive_location_data + enlightenment_location_data + secret_shop_location_data
