@@ -169,7 +169,7 @@ base_location_data = [
     LocationData("Tidal Mines", "Deep Tidal Mines Barrel Chest", 96,
                  lambda state, player: state.has("Progressive Hand", player, 2) and
                  (state.prodigal_can_long_jump(player) or (state.has("Lariat", player) and
-                 (state.has("Progressive Knuckle", player) or state.has("Progressive Pick", player))))),
+                 state.has("Progressive Knuckle", player)))),
     LocationData("Tidal Mines", "Deep Tidal Mines Turtles Chest", 97,
                  lambda state, player: state.has("Progressive Hand", player, 2) and
                  state.has("Lariat", player) and state.has("Progressive Pick", player) and
