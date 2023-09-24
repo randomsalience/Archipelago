@@ -87,8 +87,7 @@ base_location_data = [
     LocationData("Abandoned Mine", "Abandoned Mine Iron Pick Chest", 2,
                  lambda state, player: True),
     LocationData("Abandoned Mine", "Abandoned Mine Lower Chest", 44,
-                 lambda state, player: state.has("Lariat", player) and state.has("Progressive Knuckle", player) and
-                 (state.has("Progressive Hand", player) or state.has("Progressive Knuckle", player, 2))),
+                 lambda state, player: state.has("Lariat", player) and state.has("Progressive Knuckle", player)),
     
     LocationData("Waterfall Cave", "Waterfall Cave Item", 135,
                  lambda state, player: state.has("Progressive Pick", player) and state.has("Lariat", player)),
@@ -376,25 +375,22 @@ base_location_data = [
                  state.has("Red Crystal", player) and state.has("Sunset Painting", player)),
     
     LocationData("Crystal Caves", "Crystal Caves Three Barrels Chest", 110,
-                 lambda state, player: (state.has("Progressive Knuckle", player, 2) or
-                 (state.has("Progressive Hand", player) and state.has("Lariat", player))) and
+                 lambda state, player: (state.has("Progressive Knuckle", player, 2) or state.has("Lariat", player)) and
                  (state.prodigal_can_long_jump(player) or (state.has("Progressive Pick", player) and
                  (state.has("Lariat", player) or state.prodigal_has_cleats(player))))),
     LocationData("Crystal Caves", "Crystal Caves Right Side Across Ice Chest", 136,
-                 lambda state, player: (state.has("Progressive Knuckle", player, 2) or
-                 (state.has("Progressive Hand", player) and state.has("Lariat", player))) and
+                 lambda state, player: (state.has("Progressive Knuckle", player, 2) or state.has("Lariat", player)) and
                  (state.prodigal_can_long_jump(player) or state.has("Lariat", player) or
                  state.prodigal_has_cleats(player)) and state.has("Progressive Pick", player)),
     LocationData("Crystal Caves", "Crystal Caves Center Room Chest", 111,
-                 lambda state, player: state.has("Progressive Knuckle", player) and
-                 ((state.has("Progressive Hand", player) and state.has("Lariat", player)) or
-                 (state.has("Progressive Knuckle", player, 2) and state.prodigal_has_cleats(player) and
-                 state.has("Progressive Pick", player))) and (state.prodigal_can_long_jump(player) or
-                 (state.has("Progressive Pick", player) and (state.has("Lariat", player) or
-                 state.prodigal_has_cleats(player)))) and state.prodigal_has_key("Crystal Caves", player, 2)),
+                 lambda state, player: (state.has("Progressive Knuckle", player, 2) or state.has("Lariat", player)) and
+                 (state.prodigal_can_long_jump(player) or (state.has("Progressive Pick", player) and
+                 (state.has("Lariat", player) or state.prodigal_has_cleats(player)))) and
+                 (state.prodigal_has_cleats(player) or (state.has("Progressive Pick", player) and
+                 state.has("Progressive Hand", player) and state.has("Lariat", player))) and
+                 state.has("Progressive Knuckle", player) and state.prodigal_has_key("Crystal Caves", player, 2)),
     LocationData("Crystal Caves", "Crystal Caves Trapped Chest", 109,
-                 lambda state, player: (state.has("Progressive Knuckle", player, 2) or
-                 (state.has("Progressive Hand", player) and state.has("Lariat", player))) and
+                 lambda state, player: (state.has("Progressive Knuckle", player, 2) or state.has("Lariat", player)) and
                  (state.prodigal_can_long_jump(player) or (state.has("Progressive Pick", player) and
                  (state.has("Lariat", player) or state.prodigal_has_cleats(player)))) and
                  state.has("Progressive Knuckle", player) and state.prodigal_has_key("Crystal Caves", player, 2)),
@@ -446,8 +442,7 @@ base_location_data = [
     LocationData("Haunted Hall", "Haunted Hall Right Entry Chest", 66,
                  lambda state, player: True),
     LocationData("Haunted Hall", "Haunted Hall Left Entry Chest", 65,
-                 lambda state, player: state.has("Progressive Knuckle", player, 2) or
-                 (state.prodigal_can_hit(player) and state.has("Progressive Hand", player))),
+                 lambda state, player: state.prodigal_can_hit(player)),
     LocationData("Haunted Hall", "Haunted Hall Invisible Maze Chest", 67,
                  lambda state, player: state.prodigal_can_hit(player) and
                  state.has("Progressive Hand", player) and state.prodigal_has_key("Haunted Hall", player, 1)),
