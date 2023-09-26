@@ -1,3 +1,4 @@
+from typing import Optional
 from BaseClasses import Item, ItemClassification, Location, Tutorial
 from ..AutoWorld import World, WebWorld
 from worlds.generic.Rules import set_rule
@@ -130,4 +131,15 @@ class ProdigalWorld(World):
             option = getattr(self.multiworld, option_name)[self.player]
             slot_data[option_name] = option.value
         slot_data["seed"] = self.random.randrange(1, 2**31)
+        pick_location = self.find_earliest("Progressive Pick")
+        if pick_location:
+            slot_data["pick_hint_player"] = self.multiworld.player_name[pick_location.player]
+            slot_data["pick_hint_location"] = pick_location.name
         return slot_data
+
+    def find_earliest(self, item_name: str) -> Optional[Location]:
+        for sphere in self.multiworld.get_spheres():
+            for location in sphere:
+                if location.item.player == self.player and location.item.name == item_name:
+                    return location
+        return None
