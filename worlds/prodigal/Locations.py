@@ -620,6 +620,29 @@ hidden_location_data = [
                  lambda state, player: True),
 ]
 
+bjerg_castle_location_data = [
+    LocationData("Bjerg Castle", "Bjerg Castle Hype Chest 1", 56,
+                 lambda state, player: True),
+    LocationData("Bjerg Castle", "Bjerg Castle Hype Chest 2", 60,
+                 lambda state, player: True),
+    LocationData("Bjerg Castle", "Bjerg Castle Hype Chest 3", 59,
+                 lambda state, player: True),
+    LocationData("Bjerg Castle", "Bjerg Castle Hype Chest 4", 57,
+                 lambda state, player: True),
+    LocationData("Bjerg Castle", "Bjerg Castle Hype Chest 5", 61,
+                 lambda state, player: True),
+    LocationData("Bjerg Castle", "Bjerg Castle Hype Chest 6", 58,
+                 lambda state, player: True),
+    LocationData("Bjerg Castle", "Bjerg Castle Cannonball Chest", 54,
+                 lambda state, player: state.has("Lariat", player) and state.has("Progressive Knuckle", player)),
+    LocationData("Bjerg Castle", "Bjerg Castle Near Boss Chest", 55,
+                 lambda state, player: state.has("Lariat", player) and
+                 state.has("Progressive Knuckle", player) and state.prodigal_has_key("Bjerg Castle", player, 1)),
+    LocationData("Bjerg Castle", "Bjerg Castle Captain Crossbones", 248,
+                 lambda state, player: state.has("Lariat", player) and
+                 state.has("Progressive Knuckle", player) and state.prodigal_has_key("Bjerg Castle", player, 1)),
+]
+
 daemons_dive_location_data = [   
     LocationData("Daemon's Dive", "Daemon's Dive 1 Barrel Puzzle Chest", 98,
                  lambda state, player: (state.has("Lariat", player) or state.prodigal_can_long_jump(player)) and

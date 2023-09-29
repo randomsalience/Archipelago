@@ -104,6 +104,7 @@ item_table: Dict[str, ItemData] = {
     "Key (Siska's Workshop)": ItemData(115, progression),
     "Key (Backrooms)": ItemData(116, progression),
     "Key (Pirate's Pier)": ItemData(117, progression),
+    "Key (Bjerg Castle)": ItemData(118, progression),
 }
 
 base_item_pool: Dict[str, int] = {
@@ -220,6 +221,18 @@ specific_key_item_pool: Dict[str, int] = {
     "Key (Siska's Workshop)": 3,
     "Key (Backrooms)": 2,
     "Key (Pirate's Pier)": 5,
+}
+
+bjerg_castle_universal_item_pool: Dict[str, int] = {
+    "Gold (100)": 4,
+    "Tidal Gem": 2,
+    "Normal Key": 1,
+}
+
+bjerg_castle_specific_item_pool: Dict[str, int] = {
+    "Gold (100)": 4,
+    "Tidal Gem": 2,
+    "Key (Bjerg Castle)": 1,
 }
 
 daemons_dive_item_pool: Dict[str, int] = {

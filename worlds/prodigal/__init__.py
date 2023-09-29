@@ -33,7 +33,6 @@ class ProdigalWorld(World):
     game: str = "Prodigal"
     option_definitions = prodigal_options
     topology_present = False
-    data_version = 1
     required_client_version = (0, 4, 2)
     web = ProdigalWebWorld()
 
@@ -58,6 +57,8 @@ class ProdigalWorld(World):
             location_data += grelin_location_data
         if self.multiworld.shuffle_hidden_items[self.player]:
             location_data += hidden_location_data
+        if self.multiworld.shuffle_bjerg_castle[self.player]:
+            location_data += bjerg_castle_location_data
         if self.multiworld.shuffle_daemons_dive[self.player]:
             location_data += daemons_dive_location_data
         else:
@@ -87,8 +88,12 @@ class ProdigalWorld(World):
             item_pools.append(hidden_item_pool)
         if self.multiworld.specific_keys[self.player]:
             item_pools.append(specific_key_item_pool)
+            if self.multiworld.shuffle_bjerg_castle[self.player]:
+                item_pools.append(bjerg_castle_specific_item_pool)
         else:
             item_pools.append(universal_key_item_pool)
+            if self.multiworld.shuffle_bjerg_castle[self.player]:
+                item_pools.append(bjerg_castle_universal_item_pool)
         if self.multiworld.shuffle_daemons_dive[self.player]:
             item_pools.append(daemons_dive_item_pool)
         if self.multiworld.shuffle_enlightenment[self.player]:

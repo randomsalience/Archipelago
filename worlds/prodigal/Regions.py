@@ -48,6 +48,7 @@ def create_and_connect_regions(multiworld: MultiWorld, player: int):
             lambda state: state.has("Stindle's Map", player) and state.prodigal_can_hit(player))
     connect(multiworld, player, "Vann's Point", "Lighthouse",
             lambda state: state.prodigal_has_colors(player, multiworld.colors_required[player]))
+    connect(multiworld, player, "Vann's Point", "Bjerg Castle")
     connect(multiworld, player, "Vann's Point", "Daemon's Dive",
             lambda state: state.has("Progressive Hand", player, 2) and
             state.has("Hallowed Key", player) and state.has("Daemons Key", player))
@@ -78,6 +79,7 @@ region_names = [
     "Backrooms",
     "Pirate's Pier",
     "Lighthouse",
+    "Bjerg Castle",
     "Daemon's Dive",
     "Enlightenment",
 ]

@@ -67,6 +67,10 @@ class ShuffleHiddenItems(Toggle):
     """Include hidden overworld items in the pool."""
     display_name = "Shuffle Hidden Items"
 
+class ShuffleBjergCastle(Toggle):
+    """Include Bjerg Castle (Mariana's marriage dungeon) in the pool. A sailor near the arena will take you there."""
+    display_name = "Shuffle Bjerg Castle"
+
 class ShuffleDaemonsDive(Toggle):
     """Include Daemon's Dive in the pool."""
     display_name = "Shuffle Daemon's Dive"
@@ -109,6 +113,7 @@ prodigal_options: Dict[str, AssembleOptions] = {
     "trading_quest": TradingQuest,
     "shuffle_grelin_drops": ShuffleGrelinDrops,
     "shuffle_hidden_items": ShuffleHiddenItems,
+    "shuffle_bjerg_castle": ShuffleBjergCastle,
     "shuffle_daemons_dive": ShuffleDaemonsDive,
     "shuffle_enlightenment": ShuffleEnlightenment,
     "shuffle_secret_shop": ShuffleSecretShop,
