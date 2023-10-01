@@ -83,9 +83,9 @@ class ShuffleSecretShop(Toggle):
     """Include Zaegul's Secret Shop in the pool."""
     display_name = "Shuffle Secret Shop"
 
-class LongJumpsInLogic(Toggle):
-    """The seed may require two-tile jumps with the flare knuckle. (This setting does not affect Enlightenment which necessarily requires such jumps.)"""
-    display_name = "Long Jumps In Logic"
+class SkipsInLogic(Toggle):
+    """The seed may require skips such as side hits, two-tile flare jumps outside of Enlightenment, deleting objects with the Empowered Hand, and interacting with objects from a tile away."""
+    display_name = "Skips In Logic"
 
 class StartWithSpicedHam(Toggle):
     """Start with a buff that lets you run."""
@@ -117,7 +117,7 @@ prodigal_options: Dict[str, AssembleOptions] = {
     "shuffle_daemons_dive": ShuffleDaemonsDive,
     "shuffle_enlightenment": ShuffleEnlightenment,
     "shuffle_secret_shop": ShuffleSecretShop,
-    "long_jumps_in_logic": LongJumpsInLogic,
+    "skips_in_logic": SkipsInLogic,
     "start_with_spiced_ham": StartWithSpicedHam,
     "skip_one_small_favor": SkipOneSmallFavor,
     "fake_dread_hand": FakeDreadHand,
