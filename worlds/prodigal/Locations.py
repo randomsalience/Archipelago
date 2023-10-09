@@ -92,7 +92,7 @@ base_location_data = [
                  state.prodigal_skips(player) and state.has_all({"Progressive Knuckle", "Lariat"}, player)),
     
     LocationData("Celina's Mine", "Celina's Mine - Item", 179,
-                 lambda state, player: state.prodigal_can_hit(player)),
+                 lambda state, player: state.has("Progressive Pick", player)),
     
     LocationData("Cursed Grave", "Cursed Grave - Top Chest", 49,
                  lambda state, player: state.prodigal_can_hit(player)),
@@ -258,7 +258,8 @@ base_location_data = [
                  lambda state, player: state.has("Progressive Knuckle", player, 2) or
                  state.has("Lariat", player) or state.prodigal_skips(player)),
     LocationData("Castle Vann", "Castle Vann - West - Ball Puzzle Chest", 51,
-                 lambda state, player: state.has("Lariat", player) or state.prodigal_can_long_jump(player)),
+                 lambda state, player: (state.has("Lariat", player) or state.prodigal_can_long_jump(player)) and
+                 (state.prodigal_skips(player) or state.has("Progressive Knuckle", player))),
     LocationData("Castle Vann", "Castle Vann - West - After Ball Puzzle Chest", 34,
                  lambda state, player: state.has("Progressive Knuckle", player) and
                  (state.has("Lariat", player) or state.prodigal_can_long_jump(player))),
@@ -309,7 +310,7 @@ base_location_data = [
                  state.has("Progressive Knuckle", player) and
                  (state.has("Lariat", player) or state.prodigal_can_long_jump(player))),
     LocationData("Magma Heart", "Magma Heart - Loomagnos", 169,
-                 lambda state, player: state.prodigal_can_hit_fire(player) and state.has("Progressive Knuckle", player) and
+                 lambda state, player: state.has("Progressive Pick", player) and state.has("Progressive Knuckle", player) and
                  (state.has("Lariat", player) or state.prodigal_can_long_jump(player))),
     LocationData("Magma Heart", "Magma Heart - Deep - Spike Balls Chest", 91,
                  lambda state, player: state.has("Progressive Hand", player, 2) and
