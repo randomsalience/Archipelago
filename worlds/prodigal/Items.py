@@ -68,7 +68,7 @@ item_table: Dict[str, ItemData] = {
     "Eerie Mask": ItemData(73, progression),
     "Frozen Heart": ItemData(74, progression),
     "Red Crystal": ItemData(75, progression),
-    "Weapon Chain": ItemData(78, useful),
+    "Weapon Chain": ItemData(78, progression),
     "Climbing Gear": ItemData(79, progression),
     "Illusion Ring": ItemData(80, useful),
     "Golem Ring": ItemData(81, useful),
