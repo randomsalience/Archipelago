@@ -26,7 +26,8 @@ base_location_data = [
                  lambda state, player: state.prodigal_has_enough_coins(player) and state.prodigal_can_hit(player) and
                  (state.has("Anchor Greaves", player) or state.has("Boots of Graile", player))),
     LocationData("Vann's Point", "Near Mine Heart Ore", 146,
-                 lambda state, player: state.has_all({"Progressive Pick", "Progressive Knuckle"}, player)),
+                 lambda state, player: state.has("Progressive Pick", player) and
+                 (state.has("Progressive Knuckle", player) or state.prodigal_skips(player))),
     LocationData("Vann's Point", "Near Siska Heart Ore", 147,
                  lambda state, player: state.has("Progressive Pick", player) and (state.has("Lariat", player) or
                  (state.prodigal_skips(player) and state.has("Progressive Knuckle", player, 2)))),
@@ -199,11 +200,14 @@ base_location_data = [
     LocationData("Dry Fountain", "Dry Fountain - Right Side Heart Ore", 159,
                  lambda state, player: state.has_all({"Progressive Pick", "Lariat", "Progressive Knuckle", "Progressive Hand"}, player)),
     LocationData("Dry Fountain", "Dry Fountain - Left Hidden Chest", 17,
-                 lambda state, player: state.has_all({"Progressive Pick", "Lariat", "Progressive Knuckle"}, player)),
+                 lambda state, player: state.has_all({"Lariat", "Progressive Knuckle"}, player) and
+                 (state.has("Progressive Pick", player) or state.prodigal_skips(player))),
     LocationData("Dry Fountain", "Dry Fountain - Center Hidden Chest", 69,
-                 lambda state, player: state.has_all({"Progressive Pick", "Lariat", "Progressive Knuckle"}, player)),
+                 lambda state, player: state.has_all({"Lariat", "Progressive Knuckle"}, player) and
+                 (state.has("Progressive Pick", player) or state.prodigal_skips(player))),
     LocationData("Dry Fountain", "Dry Fountain - Right Hidden Chest", 18,
-                 lambda state, player: state.has_all({"Progressive Pick", "Lariat", "Progressive Knuckle"}, player)),
+                 lambda state, player: state.has_all({"Lariat", "Progressive Knuckle"}, player) and
+                 (state.has("Progressive Pick", player) or state.prodigal_skips(player))),
     LocationData("Dry Fountain", "Dry Fountain - Rat Potion", 63,
                  lambda state, player: state.has_all({"Progressive Pick", "Lariat", "Progressive Knuckle", "Progressive Hand"}, player)),
     
@@ -265,7 +269,7 @@ base_location_data = [
                  (state.has("Lariat", player) or state.prodigal_can_long_jump(player))),
     LocationData("Castle Vann", "Castle Vann - West - Turtle Chest", 29,
                  lambda state, player: state.prodigal_can_long_jump(player) or
-                 (state.has("Progressive Pick", player) and state.prodigal_has_key("Castle Vann", player, 4))),
+                 (state.prodigal_can_hit(player) and state.prodigal_has_key("Castle Vann", player, 4))),
     LocationData("Castle Vann", "Castle Vann - West - Black Hole Chest", 35,
                  lambda state, player: state.prodigal_can_long_jump(player) or
                  (state.has("Progressive Knuckle", player) and state.has("Lariat", player) and
