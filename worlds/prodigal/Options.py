@@ -91,6 +91,10 @@ class StartWithSpicedHam(Toggle):
     """Start with a buff that lets you run."""
     display_name = "Start With Spiced Ham"
 
+class StartWithWingedBoots(Toggle):
+    """Start with Winged Boots."""
+    display_name = "Start With Winged Boots"
+
 class SkipOneSmallFavor(Toggle):
     """Tara gives you an item directly instead of requiring you to go on a fetch quest."""
     display_name = "Skip One Small Favor"
@@ -202,6 +206,7 @@ prodigal_options: Dict[str, AssembleOptions] = {
     "shuffle_secret_shop": ShuffleSecretShop,
     "skips_in_logic": SkipsInLogic,
     "start_with_spiced_ham": StartWithSpicedHam,
+    "start_with_winged_boots": StartWithWingedBoots,
     "skip_one_small_favor": SkipOneSmallFavor,
     "fake_dread_hand": FakeDreadHand,
     "fast_fishing": FastFishing,

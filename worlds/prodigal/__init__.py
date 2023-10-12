@@ -1,5 +1,6 @@
 from typing import Optional
 from BaseClasses import Item, ItemClassification, Location, Tutorial
+from Options import StartInventoryPool
 from ..AutoWorld import World, WebWorld
 from worlds.generic.Rules import set_rule
 from .Items import *
@@ -58,6 +59,15 @@ class ProdigalWorld(World):
         if self.multiworld.curse_of_horns[self.player] or (len(enabled_traps) > 0 and self.random.randrange(100) < self.multiworld.trap_chance[self.player]):
             return self.random.choice(enabled_traps)
         return self.random.choice(filler_items)
+
+    def generate_early(self):
+        start_inventory_from_pool = self.multiworld.start_inventory_from_pool.setdefault(self.player, StartInventoryPool({})).value
+        for item_name, count in self.multiworld.start_inventory[self.player].value.items():
+            start_inventory_from_pool.setdefault(item_name, 0)
+            start_inventory_from_pool[item_name] += count
+        self.multiworld.start_inventory[self.player].value = {}
+        if self.multiworld.start_with_winged_boots[self.player]:
+            start_inventory_from_pool.setdefault("Winged Boots", 1)
 
     def create_regions(self):
         create_and_connect_regions(self.multiworld, self.player)
