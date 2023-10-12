@@ -254,3 +254,13 @@ filler_items: List[str] = [
     "Tidal Gem",
     "Lumen Beetle",
 ]
+
+trap_items: List[str] = [
+    "Slowness",
+    "Rust",
+    "Confusion",
+    "Disarming",
+    "Light",
+    "Zombie",
+    "Shadow",
+]

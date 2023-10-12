@@ -103,6 +103,89 @@ class FastFishing(Toggle):
     """Only 100 points are required in the fishing minigame to get the item from Keaton and to get free fish."""
     display_name = "Fast Fishing"
 
+class AltarToVar(Toggle):
+    """Defile the altar to Var. Receive double damage."""
+    display_name = "Altar to Var"
+
+class AltarToZolei(Toggle):
+    """Defile the altar to Zolei. Item drops are reduced in frequency, and you must fight Zolei alongside Var."""
+    display_name = "Altar to Zolei"
+
+class AltarToRaem(Toggle):
+    """Defile the altar to Raem. Raem will attack you with beams of light, and you cannot gain extra HP through prayer."""
+    display_name = "Altar to Raem"
+
+class AltarToHate(Toggle):
+    """Defile the altar to Hate. Heart ores do not increase your maximum HP."""
+    display_name = "Altar to Hate"
+
+class CurseOfFrailty(Toggle):
+    """Accept the curse of frailty. You die in one hit."""
+    display_name = "Curse of Frailty"
+
+class CurseOfFamine(Toggle):
+    """Accept the curse of famine. You cannot buy buffs."""
+    display_name = "Curse of Famine"
+
+class CurseOfRust(Toggle):
+    """Accept the curse of rust. The pick cannot be upgraded, and boots and rings do not work, except for the Winged Boots and Wedding Rings."""
+    display_name = "Curse of Rust"
+
+class CurseOfWind(Toggle):
+    """Accept the curse of wind. Doubles the speed of projectiles."""
+    display_name = "Curse of Wind"
+
+class CurseOfBlooms(Toggle):
+    """Accept the curse of blooms. Enemies drop bombs when they die."""
+    display_name = "Curse of Blooms"
+
+class CurseOfCrowns(Toggle):
+    """Accept the curse of crowns. You cannot marry anyone."""
+    display_name = "Curse of Crowns"
+
+class CurseOfHorns(Toggle):
+    """Accept the curse of horns. All junk items, such as gold, are replaced by traps. Note that if no trap options are selected then all traps will be enabled."""
+    display_name = "Curse of Horns"
+
+class CurseOfFlames(Toggle):
+    """Accept the curse of flames. Flames appear behind you as you move through dungeons."""
+    display_name = "Curse of Flames"
+
+class TrapChance(Range):
+    """Percentage chance of an added filler item being a trap. Items in the base pool are not affected. Has no effect if Curse of Horns is active."""
+    display_name = "Trap Chance"
+    range_start = 0
+    range_end = 100
+    default = 50
+
+class SlownessTraps(Toggle):
+    """Enable slowness traps, which prevent you from running for 20 seconds."""
+    display_name = "Slowness Traps"
+
+class RustTraps(Toggle):
+    """Enable rust traps, which disable boots and rings for 20 seconds."""
+    display_name = "Rust Traps"
+
+class ConfusionTraps(Toggle):
+    """Enable confusion traps, which reverse your movement for 20 seconds."""
+    display_name = "Confusion Traps"
+
+class DisarmingTraps(Toggle):
+    """Enable disarming traps, which prevent use of the pick for 20 seconds."""
+    display_name = "Disarming Traps"
+
+class LightTraps(Toggle):
+    """Enable light traps, which attack you with beams of light for 20 seconds."""
+    display_name = "Light Traps"
+
+class ZombieTraps(Toggle):
+    """Enable zombie traps, which spawn zombies around you."""
+    display_name = "Zombie Traps"
+
+class ShadowTraps(Toggle):
+    """Enable shadow traps, which warp you as though you used the Dread Hand."""
+    display_name = "Shadow Traps"
+
 prodigal_options: Dict[str, AssembleOptions] = {
     "specific_keys": SpecificKeys,
     "colors_required": ColorsRequired,
@@ -122,4 +205,24 @@ prodigal_options: Dict[str, AssembleOptions] = {
     "skip_one_small_favor": SkipOneSmallFavor,
     "fake_dread_hand": FakeDreadHand,
     "fast_fishing": FastFishing,
+    "altar_to_var": AltarToVar,
+    "altar_to_zolei": AltarToZolei,
+    "altar_to_raem": AltarToRaem,
+    "altar_to_hate": AltarToHate,
+    "curse_of_frailty": CurseOfFrailty,
+    "curse_of_famine": CurseOfFamine,
+    "curse_of_rust": CurseOfRust,
+    "curse_of_wind": CurseOfWind,
+    "curse_of_blooms": CurseOfBlooms,
+    "curse_of_crowns": CurseOfCrowns,
+    "curse_of_horns": CurseOfHorns,
+    "curse_of_flames": CurseOfFlames,
+    "trap_chance": TrapChance,
+    "slowness_traps": SlownessTraps,
+    "rust_traps": RustTraps,
+    "confusion_traps": ConfusionTraps,
+    "disarming_traps": DisarmingTraps,
+    "light_traps": LightTraps,
+    "zombie_traps": ZombieTraps,
+    "shadow_traps": ShadowTraps,
 }

@@ -42,7 +42,21 @@ class ProdigalWorld(World):
     def create_item(self, name: str):
         return ProdigalItem(name, item_table[name].classification, prodigal_base_id + item_table[name].code, self.player)
 
+    def create_item_or_trap(self, name: str):
+        if self.multiworld.curse_of_horns[self.player] and name in filler_items:
+            return self.create_item(self.random.choice(self.enabled_traps()))
+        return self.create_item(name)
+
+    def enabled_traps(self):
+        enabled_traps = [f"{trap} Trap" for trap in trap_items if self.multiworld.getattr(f"{trap.lower()}_traps")[self.player]]
+        if len(enabled_traps) > 0 or not self.multiworld.curse_of_horns[self.player]:
+            return enabled_traps
+        return [f"{trap} Trap" for trap in trap_items]
+
     def get_filler_item_name(self):
+        enabled_traps = self.enabled_traps()
+        if self.multiworld.curse_of_horns[self.player] or (len(enabled_traps) > 0 and self.random.randrange(100) < self.multiworld.trap_chance[self.player]):
+            return self.random.choice(enabled_traps)
         return self.random.choice(filler_items)
 
     def create_regions(self):
@@ -104,7 +118,7 @@ class ProdigalWorld(World):
             for item, count in item_pool.items():
                 num_items += count
                 for _ in range(count):
-                    self.multiworld.itempool.append(self.create_item(item))
+                    self.multiworld.itempool.append(self.create_item_or_trap(item))
         
         num_locations = len([location for location in self.multiworld.get_locations(self.player) if location.address != None])
         
