@@ -43,22 +43,30 @@ class ProdigalWorld(World):
     def create_item(self, name: str):
         return ProdigalItem(name, item_table[name].classification, prodigal_base_id + item_table[name].code, self.player)
 
-    def create_item_or_trap(self, name: str):
-        if self.multiworld.curse_of_horns[self.player] and name in filler_items:
-            return self.create_item(self.random.choice(self.enabled_traps()))
-        return self.create_item(name)
-
     def enabled_traps(self):
-        enabled_traps = [f"{trap} Trap" for trap in trap_items if self.multiworld.getattr(f"{trap.lower()}_traps")[self.player]]
+        all_traps = [f"{trap} Trap" for trap in trap_items]
+        if self.multiworld.enable_all_traps[self.player]:
+            return all_traps
+        enabled_traps = [f"{trap} Trap" for trap in trap_items if getattr(self.multiworld, f"{trap.lower()}_traps")[self.player]]
         if len(enabled_traps) > 0 or not self.multiworld.curse_of_horns[self.player]:
             return enabled_traps
-        return [f"{trap} Trap" for trap in trap_items]
+        return all_traps
+
+    def get_trap_name(self):
+        if self.random.randrange(1000) == 0:
+            return "Love Trap"
+        return self.random.choice(self.enabled_traps())
 
     def get_filler_item_name(self):
         enabled_traps = self.enabled_traps()
         if self.multiworld.curse_of_horns[self.player] or (len(enabled_traps) > 0 and self.random.randrange(100) < self.multiworld.trap_chance[self.player]):
-            return self.random.choice(enabled_traps)
+            return self.get_trap_name()
         return self.random.choice(filler_items)
+
+    def create_item_or_trap(self, name: str):
+        if self.multiworld.curse_of_horns[self.player] and name in filler_items:
+            return self.create_item(self.get_trap_name())
+        return self.create_item(name)
 
     def generate_early(self):
         start_inventory_from_pool = self.multiworld.start_inventory_from_pool.setdefault(self.player, StartInventoryPool({})).value

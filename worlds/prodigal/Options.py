@@ -162,6 +162,10 @@ class TrapChance(Range):
     range_end = 100
     default = 50
 
+class EnableAllTraps(Toggle):
+    """Enabling this overrides the individual trap settings and enables all types of traps."""
+    display_name = "Enable All Traps"
+
 class SlownessTraps(Toggle):
     """Enable slowness traps, which prevent you from running for 20 seconds."""
     display_name = "Slowness Traps"
@@ -181,6 +185,10 @@ class DisarmingTraps(Toggle):
 class LightTraps(Toggle):
     """Enable light traps, which attack you with beams of light for 20 seconds."""
     display_name = "Light Traps"
+
+class GlitchTraps(Toggle):
+    """Enable glitch traps, which cause graphical glitches for 20 seconds."""
+    display_name = "Glitch Traps"
 
 class ZombieTraps(Toggle):
     """Enable zombie traps, which spawn zombies around you."""
@@ -223,11 +231,13 @@ prodigal_options: Dict[str, AssembleOptions] = {
     "curse_of_horns": CurseOfHorns,
     "curse_of_flames": CurseOfFlames,
     "trap_chance": TrapChance,
+    "enable_all_traps": EnableAllTraps,
     "slowness_traps": SlownessTraps,
     "rust_traps": RustTraps,
     "confusion_traps": ConfusionTraps,
     "disarming_traps": DisarmingTraps,
     "light_traps": LightTraps,
+    "glitch_traps": GlitchTraps,
     "zombie_traps": ZombieTraps,
     "shadow_traps": ShadowTraps,
 }

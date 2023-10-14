@@ -4,6 +4,7 @@ from typing import Dict, List, NamedTuple
 progression = ItemClassification.progression
 useful = ItemClassification.useful
 filler = ItemClassification.filler
+trap = ItemClassification.trap
 
 class ItemData(NamedTuple):
     code: int
@@ -105,6 +106,15 @@ item_table: Dict[str, ItemData] = {
     "Key (Backrooms)": ItemData(116, progression),
     "Key (Pirate's Pier)": ItemData(117, progression),
     "Key (Bjerg Castle)": ItemData(118, progression),
+    "Slowness Trap": ItemData(119, trap),
+    "Rust Trap": ItemData(120, trap),
+    "Confusion Trap": ItemData(121, trap),
+    "Disarming Trap": ItemData(122, trap),
+    "Light Trap": ItemData(123, trap),
+    "Glitch Trap": ItemData(124, trap),
+    "Zombie Trap": ItemData(125, trap),
+    "Shadow Trap": ItemData(126, trap),
+    "Love Trap": ItemData(127, trap),
 }
 
 base_item_pool: Dict[str, int] = {
@@ -261,6 +271,7 @@ trap_items: List[str] = [
     "Confusion",
     "Disarming",
     "Light",
+    "Glitch",
     "Zombie",
     "Shadow",
 ]
