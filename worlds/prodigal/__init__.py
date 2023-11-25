@@ -39,6 +39,7 @@ class ProdigalWorld(World):
 
     item_name_to_id = {name: prodigal_base_id + data.code for name, data in item_table.items()}
     location_name_to_id = {data.name: prodigal_base_id + data.code if data.code != None else None for data in all_location_data}
+    item_name_groups = item_name_groups
 
     def create_item(self, name: str):
         return ProdigalItem(name, item_table[name].classification, prodigal_base_id + item_table[name].code, self.player)

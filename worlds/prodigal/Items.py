@@ -275,3 +275,8 @@ trap_items: List[str] = [
     "Zombie",
     "Shadow",
 ]
+
+item_name_groups = {
+    "Color": {"Fury Heart", "Shattered Soul", "Frozen Heart", "Red Crystal", "Sunset Painting"},
+    "Blessing": {"Life Blessing", "Light Blessing", "Storm Blessing", "Earth Blessing", "Water Blessing"},
+}
