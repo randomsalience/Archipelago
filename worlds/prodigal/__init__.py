@@ -35,7 +35,6 @@ class ProdigalWorld(World):
     option_definitions = prodigal_options
     topology_present = False
     required_client_version = (0, 4, 2)
-    data_version = 2
     web = ProdigalWebWorld()
 
     item_name_to_id = {name: prodigal_base_id + data.code for name, data in item_table.items()}

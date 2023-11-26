@@ -770,4 +770,4 @@ secret_shop_location_data = [
 ]
 
 all_location_data = base_location_data + grelin_location_data + trade_location_data + hidden_location_data + \
-    daemons_dive_location_data + enlightenment_location_data + secret_shop_location_data
+    bjerg_castle_location_data + daemons_dive_location_data + enlightenment_location_data + secret_shop_location_data
