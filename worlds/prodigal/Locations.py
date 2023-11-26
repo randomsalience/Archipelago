@@ -34,7 +34,8 @@ base_location_data = [
                  lambda state, player: state.has("Progressive Pick", player) and (state.has("Lariat", player) or
                  (state.prodigal_skips(player) and state.has("Progressive Knuckle", player, 2)))),
     LocationData("Vann's Point", "Near Smithy Heart Ore", 148,
-                 lambda state, player: state.has_all({"Progressive Pick", "Lariat"}, player)),
+                 lambda state, player: state.has("Progressive Pick", player) and
+                 (state.has("Lariat", player) or (state.has("Weapon Chain", player) and state.prodigal_skips(player)))),
     LocationData("Vann's Point", "Near Pond Heart Ore", 145,
                  lambda state, player: state.has("Progressive Pick", player)),
     LocationData("Vann's Point", "Near Magma Heart Heart Ore", 144,
