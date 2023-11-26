@@ -17,7 +17,8 @@ base_location_data = [
                  lambda state, player: state.has("Lariat", player)),
     LocationData("Vann's Point", "Mountain Freestanding", 180,
                  lambda state, player: state.has_all({"Progressive Knuckle", "Lariat"}, player) or
-                 (state.has("Climbing Gear", player) and (state.prodigal_skips(player) or state.prodigal_can_hit(player)))),
+                 (state.has("Climbing Gear", player) and
+                 (state.prodigal_skips(player) or state.prodigal_can_hit(player)))),
     LocationData("Vann's Point", "Pa's Desk", 227,
                  lambda state, player: True),
     LocationData("Vann's Point", "Music Box", 228,
@@ -60,10 +61,12 @@ base_location_data = [
                  state.count("Cleated Boots", player) + state.count("Lucky Boots", player) + \
                  state.count("Boots of Graile", player) >= 4 and state.has("Old Hairpin", player)),
     LocationData("Vann's Point", "Lynn Gift", 211,
-                 lambda state, player: state.has_all({"Holy Relic", "Wedding Ring", "Painting", "Silver Mirror"}, player)
+                 lambda state, player: state.has_all({"Holy Relic", "Wedding Ring",
+                                                      "Painting", "Silver Mirror"}, player)
                  if state.multiworld.shuffle_grelin_drops[player] else state.prodigal_can_kill_grelins(player)),
     LocationData("Vann's Point", "Bolivar", 212,
-                 lambda state, player: state.has_all({"Shaedrite", "Drowned Ore", "Miasmic Extract", "Broken Sword"}, player)),
+                 lambda state, player: state.has_all({"Shaedrite", "Drowned Ore",
+                                                      "Miasmic Extract", "Broken Sword"}, player)),
     LocationData("Vann's Point", "Hooded Figure", 213,
                  lambda state, player: state.has("Progressive Hand", 2) and
                  state.has_all({"Eerie Mask", "Climbing Gear"}, player) and state.prodigal_can_hit(player)),
@@ -114,8 +117,9 @@ base_location_data = [
                  state.has("Progressive Knuckle", player, 2) or state.has("Progressive Hand", player, 2) or
                  state.prodigal_skips(player))),
     LocationData("Boneyard", "Boneyard - Right Side Heart Ore", 163,
-                 lambda state, player: state.has("Progressive Pick", player) and (state.has("Progressive Knuckle", player) or
-                 state.prodigal_skips(player) and (state.has("Lariat", player) or state.has("Progressive Hand", player, 2)))),
+                 lambda state, player: state.has("Progressive Pick", player) and
+                 (state.has("Progressive Knuckle", player) or state.prodigal_skips(player) and
+                 (state.has("Lariat", player) or state.has("Progressive Hand", player, 2)))),
     LocationData("Boneyard", "Boneyard - Left Hidden Chest", 7,
                  lambda state, player: state.prodigal_can_hit(player)),
     LocationData("Boneyard", "Boneyard - Right Hidden Chest", 8,
@@ -126,19 +130,21 @@ base_location_data = [
                  lambda state, player: state.has("Progressive Pick", player) or (state.prodigal_skips(player) and
                  state.has("Lariat", player) and state.has("Progressive Knuckle", player))),
     LocationData("Boneyard", "Boneyard - Dread Hand Chest", 1,
-                 lambda state, player: state.prodigal_has_key("Boneyard", player, 1) and (state.has("Progressive Pick", player) or
+                 lambda state, player: state.prodigal_has_key("Boneyard", player, 1) and
+                 (state.has("Progressive Pick", player) or
                  (state.has("Lariat", player) and state.has("Progressive Knuckle", player)))),
     LocationData("Boneyard", "Boneyard - Near Boss Heart Ore", 164,
-                 lambda state, player: state.has("Progressive Pick", player) and state.has("Progressive Hand", player)),
+                 lambda state, player: state.has_all({"Progressive Pick", "Progressive Hand"}, player)),
     LocationData("Boneyard", "Boneyard - Lariat Target Chest", 53,
                  lambda state, player: state.has("Progressive Hand", player) and state.prodigal_can_hit(player) and
-                 (state.has("Lariat", player) or (state.has("Progressive Pick", player) and state.prodigal_can_long_jump(player)))),
+                 (state.has("Lariat", player) or (state.has("Progressive Pick", player) and
+                 state.prodigal_can_long_jump(player)))),
     LocationData("Boneyard", "Boneyard - Roller Chest", 4,
-                 lambda state, player: state.has("Progressive Hand", player) and (state.has("Progressive Pick", player) or
-                 (state.has("Lariat", player) and state.has("Progressive Knuckle", player)))),
+                 lambda state, player: state.has("Progressive Hand", player) and
+                 (state.has("Progressive Pick", player) or state.has_all({"Lariat", "Progressive Knuckle"}, player))),
     LocationData("Boneyard", "Boneyard - Boss Key Chest", 9,
-                 lambda state, player: state.has("Progressive Hand", player) and (state.has("Progressive Pick", player) or
-                 (state.has("Lariat", player) and state.has("Progressive Knuckle", player)))),
+                 lambda state, player: state.has("Progressive Hand", player) and
+                 (state.has("Progressive Pick", player) or state.has_all({"Lariat", "Progressive Knuckle"}, player))),
     LocationData("Boneyard", "Boneyard - Vulture", 142,
                  lambda state, player: state.has("Boss Key", player) and
                  state.has("Progressive Pick", player) and state.has("Progressive Hand", player)),
@@ -167,8 +173,8 @@ base_location_data = [
                  (state.has("Progressive Pick", player) or state.has("Progressive Knuckle", player, 2) or
                  (state.has("Progressive Knuckle", player) and state.prodigal_skips(player)))),
     LocationData("Tidal Mines", "Tidal Mines - Islands Chest", 14,
-                 lambda state, player: state.has("Lariat", player) and state.prodigal_has_key("Tidal Mines", player, 4) and
-                 (state.has("Progressive Pick", player) or state.has("Progressive Knuckle", player, 2) or
+                 lambda state, player: state.has("Lariat", player) and state.prodigal_has_key("Tidal Mines", player, 4)
+                 and (state.has("Progressive Pick", player) or state.has("Progressive Knuckle", player, 2) or
                  state.prodigal_skips(player))),
     LocationData("Tidal Mines", "Tidal Mines - Islands Heart Ore", 152,
                  lambda state, player: state.has("Lariat", player) and state.has("Progressive Pick", player) and
@@ -192,14 +198,17 @@ base_location_data = [
                  lambda state, player: state.prodigal_can_hit(player) and
                  (state.has("Lariat", player) or state.prodigal_can_long_jump(player))),
     LocationData("Dry Fountain", "Dry Fountain - Left Side Heart Ore", 160,
-                 lambda state, player: state.has_all({"Progressive Pick", "Lariat", "Progressive Knuckle", "Progressive Hand"}, player)),
+                 lambda state, player: state.has_all({"Progressive Pick", "Lariat",
+                                                      "Progressive Knuckle", "Progressive Hand"}, player)),
     LocationData("Dry Fountain", "Dry Fountain - Central Room Chest", 21,
                  lambda state, player: (state.has("Lariat", player) and state.has("Progressive Knuckle", player)) or
                  state.prodigal_can_long_jump(player)),
     LocationData("Dry Fountain", "Dry Fountain - Barrel Bridge Chest", 19,
-                 lambda state, player: state.has_all({"Progressive Pick", "Lariat", "Progressive Knuckle", "Progressive Hand"}, player)),
+                 lambda state, player: state.has_all({"Progressive Pick", "Lariat",
+                                                      "Progressive Knuckle", "Progressive Hand"}, player)),
     LocationData("Dry Fountain", "Dry Fountain - Right Side Heart Ore", 159,
-                 lambda state, player: state.has_all({"Progressive Pick", "Lariat", "Progressive Knuckle", "Progressive Hand"}, player)),
+                 lambda state, player: state.has_all({"Progressive Pick", "Lariat",
+                                                      "Progressive Knuckle", "Progressive Hand"}, player)),
     LocationData("Dry Fountain", "Dry Fountain - Left Hidden Chest", 17,
                  lambda state, player: state.has_all({"Lariat", "Progressive Knuckle"}, player) and
                  (state.has("Progressive Pick", player) or state.prodigal_skips(player))),
@@ -210,10 +219,12 @@ base_location_data = [
                  lambda state, player: state.has_all({"Lariat", "Progressive Knuckle"}, player) and
                  (state.has("Progressive Pick", player) or state.prodigal_skips(player))),
     LocationData("Dry Fountain", "Dry Fountain - Rat Potion", 63,
-                 lambda state, player: state.has_all({"Progressive Pick", "Lariat", "Progressive Knuckle", "Progressive Hand"}, player)),
+                 lambda state, player: state.has_all({"Progressive Pick", "Lariat",
+                                                      "Progressive Knuckle", "Progressive Hand"}, player)),
     
     LocationData("Crocasino", "Crocasino - Gator Key", 232,
-                 lambda state, player: state.has("Lariat", player) or state.prodigal_can_long_jump(player)),
+                 lambda state, player: state.has("Lariat", player) or state.prodigal_can_long_jump(player) or
+                 (state.has("Progressive Knuckle", player, 2) and state.has("Gator Key", player))),
     LocationData("Crocasino", "Crocasino - Jail Chest", 50,
                  lambda state, player: state.has("Bunny Key", player) and
                  (state.has("Lariat", player) or state.has("Progressive Knuckle", player, 2)) and
@@ -221,7 +232,8 @@ base_location_data = [
                  (state.has("Lariat", player) or state.prodigal_can_long_jump(player))))),
     LocationData("Crocasino", "Crocasino - Hidden Chest", 68,
                  lambda state, player: (state.has("Lariat", player) or state.has("Progressive Knuckle", player, 2)) and
-                 ((state.has("Gator Key", player) and state.has("Progressive Pick", player)) or (state.has("Progressive Knuckle", player) and
+                 ((state.has("Gator Key", player) and state.has("Progressive Pick", player)) or
+                 (state.has("Progressive Knuckle", player) and
                  (state.has("Lariat", player) or state.prodigal_can_long_jump(player))))),
     LocationData("Crocasino", "Crocasino - Turtle Chest", 22,
                  lambda state, player: state.has_all({"Lariat", "Progressive Knuckle"}, player)),
@@ -241,7 +253,7 @@ base_location_data = [
                  lambda state, player: state.has_all({"Lariat", "Progressive Knuckle"}, player)),
     LocationData("Howling Bjerg", "Howling Bjerg - Ball Chest", 24,
                  lambda state, player: state.has_all({"Lariat", "Progressive Knuckle"}, player)),
-    LocationData("Howling Bjerg", "Howling Bjerg Inside Heart Ore", 158,
+    LocationData("Howling Bjerg", "Howling Bjerg - Inside Heart Ore", 158,
                  lambda state, player: state.has_all({"Progressive Pick", "Progressive Knuckle", "Lariat"}, player)),
     LocationData("Howling Bjerg", "Howling Bjerg - Ice Chest", 25,
                  lambda state, player: state.has_all({"Lariat", "Progressive Knuckle"}, player)),
@@ -304,18 +316,19 @@ base_location_data = [
                  lambda state, player: state.prodigal_can_hit_fire(player) and
                  (state.prodigal_skips(player) or state.has("Progressive Knuckle", player))),
     LocationData("Magma Heart", "Magma Heart - Main Room Right Chest", 26,
-                 lambda state, player: state.prodigal_can_hit_fire(player) and state.has("Progressive Knuckle", player)),
+                 lambda state, player: state.prodigal_can_hit_fire(player) and
+                 state.has("Progressive Knuckle", player)),
     LocationData("Magma Heart", "Magma Heart - Main Room Heart Ore", 155,
-                 lambda state, player: state.has("Progressive Pick", player) and state.has("Progressive Knuckle", player)),
+                 lambda state, player: state.has_all({"Progressive Pick", "Progressive Knuckle"}, player)),
     LocationData("Magma Heart", "Magma Heart - Near Boss Chest", 28,
-                 lambda state, player: state.prodigal_can_hit_fire(player) and state.has("Progressive Knuckle", player) and
-                 (state.has("Lariat", player) or state.prodigal_can_long_jump(player))),
+                 lambda state, player: state.prodigal_can_hit_fire(player) and state.has("Progressive Knuckle", player)
+                 and (state.has("Lariat", player) or state.prodigal_can_long_jump(player))),
     LocationData("Magma Heart", "Magma Heart - Near Boss Heart Ore", 156,
                  lambda state, player: state.has("Progressive Pick", player) and
                  state.has("Progressive Knuckle", player) and
                  (state.has("Lariat", player) or state.prodigal_can_long_jump(player))),
     LocationData("Magma Heart", "Magma Heart - Loomagnos", 169,
-                 lambda state, player: state.has("Progressive Pick", player) and state.has("Progressive Knuckle", player) and
+                 lambda state, player: state.has_all({"Progressive Pick", "Progressive Knuckle"}, player) and
                  (state.has("Lariat", player) or state.prodigal_can_long_jump(player))),
     LocationData("Magma Heart", "Magma Heart - Deep - Spike Balls Chest", 91,
                  lambda state, player: state.has("Progressive Hand", player, 2) and
@@ -362,14 +375,15 @@ base_location_data = [
                  state.prodigal_can_long_jump(player))),
     LocationData("Time Out", "Time Out - East - Invisible Floor Chest", 93,
                  lambda state, player: state.prodigal_time_out_2_open(player) and
-                 state.has("Progressive Knuckle", player) and (state.prodigal_has_key("Time Out", player, 2) or
+                 state.has("Progressive Knuckle", player) and (state.prodigal_has_key("Time Out", player, 3) or
                  state.has("Progressive Knuckle", player, 2))),
     LocationData("Time Out", "Time Out - Color Correction", 236,
                  lambda state, player: state.prodigal_time_out_1_open(player) and
                  state.has_all({"Progressive Pick", "Lariat", "Progressive Knuckle"}, player) and
                  state.prodigal_has_key("Time Out", player, 3)),
     LocationData("Time Out", "Time Out - Colorgrave Gift", 224,
-                 lambda state, player: state.has_all({"Shattered Soul", "Fury Heart", "Frozen Heart", "Red Crystal", "Sunset Painting"}, player)),
+                 lambda state, player: state.has_all({"Shattered Soul", "Fury Heart", "Frozen Heart",
+                                                      "Red Crystal", "Sunset Painting"}, player)),
 
     LocationData("Lighthouse", "Lighthouse - Library Chest", 43,
                  lambda state, player: state.prodigal_skips(player) or (state.has("Progressive Pick", player) and
@@ -385,12 +399,14 @@ base_location_data = [
     LocationData("Crystal Caves", "Crystal Caves - East - Three Barrels Chest", 110,
                  lambda state, player: state.prodigal_can_enter_east_crystal_caves(player)),
     LocationData("Crystal Caves", "Crystal Caves - East - Across Ice Chest", 136,
-                 lambda state, player: state.prodigal_can_enter_east_crystal_caves(player) and state.has("Progressive Pick", player)),
+                 lambda state, player: state.prodigal_can_enter_east_crystal_caves(player) and
+                 state.has("Progressive Pick", player)),
     LocationData("Crystal Caves", "Crystal Caves - East - Center Room Chest", 111,
                  lambda state, player: state.prodigal_can_enter_east_crystal_caves(player) and
                  (state.prodigal_has_cleats(player) or (state.has("Progressive Pick", player) and
-                 (state.prodigal_skips(player) or state.has("Progressive Hand", player)) and state.has("Lariat", player))) and
-                 state.prodigal_can_remove_boulders(player) and state.prodigal_has_key("Crystal Caves", player, 2)),
+                 (state.prodigal_skips(player) or state.has("Progressive Hand", player)) and
+                 state.has("Lariat", player))) and state.prodigal_can_remove_boulders(player) and
+                 state.prodigal_has_key("Crystal Caves", player, 2)),
     LocationData("Crystal Caves", "Crystal Caves - East - Trapped Chest", 109,
                  lambda state, player: state.prodigal_can_enter_east_crystal_caves(player) and
                  state.prodigal_can_remove_boulders(player) and state.prodigal_has_key("Crystal Caves", player, 2)),
@@ -442,7 +458,8 @@ base_location_data = [
     LocationData("Haunted Hall", "Haunted Hall - Crystal Chest", 72,
                  lambda state, player: state.has("Progressive Knuckle", player, 2) and
                  state.has("Progressive Hand", player) and state.prodigal_has_key("Haunted Hall", player, 2) and
-                 (state.has("Lariat", player) or state.prodigal_can_long_jump(player) or state.prodigal_has_ice_key(player))),
+                 (state.has("Lariat", player) or state.prodigal_can_long_jump(player) or
+                 state.prodigal_has_ice_key(player))),
     LocationData("Haunted Hall", "Haunted Hall - Killer", 229,
                  lambda state, player: state.prodigal_can_hit(player) and
                  state.has("Progressive Hand", player) and state.prodigal_has_key("Haunted Hall", player, 2) and
@@ -458,17 +475,17 @@ base_location_data = [
                  state.prodigal_has_key("Siska's Workshop", player, 2)),
     LocationData("Siska's Workshop", "Siska's Workshop - Mecha Vanns Chest", 86,
                  lambda state, player: state.has("Lariat", player) and state.prodigal_can_hit(player) and
-                 (state.prodigal_has_key("Siska's Workshop", player, 3) or state.has("Progressive Knuckle", player, 2)) and
-                 state.prodigal_has_key("Siska's Workshop", player, 2)),
+                 (state.prodigal_has_key("Siska's Workshop", player, 3) or state.has("Progressive Knuckle", player, 2))
+                 and state.prodigal_has_key("Siska's Workshop", player, 2)),
     LocationData("Siska's Workshop", "Siska's Workshop - Crystal Chest", 85,
                  lambda state, player: state.has("Lariat", player) and state.prodigal_can_hit(player) and
                  (((state.has("Progressive Hand", player) or state.prodigal_has_ice_key(player)) and
-                 state.prodigal_has_key("Siska's Workshop", player, 3)) or state.has("Progressive Knuckle", player, 2)) and
-                 state.prodigal_has_key("Siska's Workshop", player, 2)),
+                 state.prodigal_has_key("Siska's Workshop", player, 3)) or state.has("Progressive Knuckle", player, 2))
+                 and state.prodigal_has_key("Siska's Workshop", player, 2)),
     LocationData("Siska's Workshop", "Siska's Workshop - Siska", 231,
                  lambda state, player: state.has("Lariat", player) and state.prodigal_can_hit(player) and
-                 (state.prodigal_has_key("Siska's Workshop", player, 3) or state.has("Progressive Knuckle", player, 2)) and
-                 state.prodigal_has_key("Siska's Workshop", player, 2)),
+                 (state.prodigal_has_key("Siska's Workshop", player, 3) or state.has("Progressive Knuckle", player, 2))
+                 and state.prodigal_has_key("Siska's Workshop", player, 2)),
     
     LocationData("Backrooms", "Backrooms - Entry Chest", 89,
                  lambda state, player: state.has("Progressive Knuckle", player)),
@@ -501,7 +518,8 @@ base_location_data = [
     LocationData("Pirate's Pier", "Pirate's Pier - Outside - Lariat Target Chest", 133,
                  lambda state, player: state.has("Lariat", player)),
     LocationData("Pirate's Pier", "Pirate's Pier - Outside - Locked Chest", 132,
-                 lambda state, player: state.has("Lariat", player) and state.prodigal_has_key("Pirate's Pier", player, 5)),
+                 lambda state, player: state.has("Lariat", player) and
+                 state.prodigal_has_key("Pirate's Pier", player, 5)),
     LocationData("Pirate's Pier", "Pirate's Pier - East - Shelled Nipper Chest", 121,
                  lambda state, player: state.prodigal_can_hit(player)),
     LocationData("Pirate's Pier", "Pirate's Pier - East - Block Puzzle Chest", 122,
@@ -751,4 +769,5 @@ secret_shop_location_data = [
                  lambda state, player: state.prodigal_can_reach_zaegul(player)),
 ]
 
-all_location_data = base_location_data + grelin_location_data + trade_location_data + hidden_location_data + daemons_dive_location_data + enlightenment_location_data + secret_shop_location_data
+all_location_data = base_location_data + grelin_location_data + trade_location_data + hidden_location_data + \
+    daemons_dive_location_data + enlightenment_location_data + secret_shop_location_data
