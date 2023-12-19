@@ -1,4 +1,5 @@
-from Options import Toggle, Range, Choice, AssembleOptions
+from dataclasses import dataclass
+from Options import Toggle, Range, Choice, PerGameCommonOptions
 from typing import Dict
 
 class SpecificKeys(Toggle):
@@ -198,46 +199,46 @@ class ShadowTraps(Toggle):
     """Enable shadow traps, which warp you as though you used the Dread Hand."""
     display_name = "Shadow Traps"
 
-prodigal_options: Dict[str, AssembleOptions] = {
-    "specific_keys": SpecificKeys,
-    "colors_required": ColorsRequired,
-    "blessings_required": BlessingsRequired,
-    "crest_fragments_required": CrestFragmentsRequired,
-    "coins_of_crowl_required": CoinsOfCrowlRequired,
-    "goal": Goal,
-    "trading_quest": TradingQuest,
-    "shuffle_grelin_drops": ShuffleGrelinDrops,
-    "shuffle_hidden_items": ShuffleHiddenItems,
-    "shuffle_bjerg_castle": ShuffleBjergCastle,
-    "shuffle_daemons_dive": ShuffleDaemonsDive,
-    "shuffle_enlightenment": ShuffleEnlightenment,
-    "shuffle_secret_shop": ShuffleSecretShop,
-    "skips_in_logic": SkipsInLogic,
-    "start_with_spiced_ham": StartWithSpicedHam,
-    "start_with_winged_boots": StartWithWingedBoots,
-    "skip_one_small_favor": SkipOneSmallFavor,
-    "fake_dread_hand": FakeDreadHand,
-    "fast_fishing": FastFishing,
-    "altar_to_var": AltarToVar,
-    "altar_to_zolei": AltarToZolei,
-    "altar_to_raem": AltarToRaem,
-    "altar_to_hate": AltarToHate,
-    "curse_of_frailty": CurseOfFrailty,
-    "curse_of_famine": CurseOfFamine,
-    "curse_of_rust": CurseOfRust,
-    "curse_of_wind": CurseOfWind,
-    "curse_of_blooms": CurseOfBlooms,
-    "curse_of_crowns": CurseOfCrowns,
-    "curse_of_horns": CurseOfHorns,
-    "curse_of_flames": CurseOfFlames,
-    "trap_chance": TrapChance,
-    "enable_all_traps": EnableAllTraps,
-    "slowness_traps": SlownessTraps,
-    "rust_traps": RustTraps,
-    "confusion_traps": ConfusionTraps,
-    "disarming_traps": DisarmingTraps,
-    "light_traps": LightTraps,
-    "glitch_traps": GlitchTraps,
-    "zombie_traps": ZombieTraps,
-    "shadow_traps": ShadowTraps,
-}
+@dataclass
+class ProdigalOptions(PerGameCommonOptions):
+    specific_keys: SpecificKeys
+    colors_required: ColorsRequired
+    blessings_required: BlessingsRequired
+    crest_fragments_required: CrestFragmentsRequired
+    coins_of_crowl_required: CoinsOfCrowlRequired
+    goal: Goal
+    trading_quest: TradingQuest
+    shuffle_grelin_drops: ShuffleGrelinDrops
+    shuffle_hidden_items: ShuffleHiddenItems
+    shuffle_bjerg_castle: ShuffleBjergCastle
+    shuffle_daemons_dive: ShuffleDaemonsDive
+    shuffle_enlightenment: ShuffleEnlightenment
+    shuffle_secret_shop: ShuffleSecretShop
+    skips_in_logic: SkipsInLogic
+    start_with_spiced_ham: StartWithSpicedHam
+    start_with_winged_boots: StartWithWingedBoots
+    skip_one_small_favor: SkipOneSmallFavor
+    fake_dread_hand: FakeDreadHand
+    fast_fishing: FastFishing
+    altar_to_var: AltarToVar
+    altar_to_zolei: AltarToZolei
+    altar_to_raem: AltarToRaem
+    altar_to_hate: AltarToHate
+    curse_of_frailty: CurseOfFrailty
+    curse_of_famine: CurseOfFamine
+    curse_of_rust: CurseOfRust
+    curse_of_wind: CurseOfWind
+    curse_of_blooms: CurseOfBlooms
+    curse_of_crowns: CurseOfCrowns
+    curse_of_horns: CurseOfHorns
+    curse_of_flames: CurseOfFlames
+    trap_chance: TrapChance
+    enable_all_traps: EnableAllTraps
+    slowness_traps: SlownessTraps
+    rust_traps: RustTraps
+    confusion_traps: ConfusionTraps
+    disarming_traps: DisarmingTraps
+    light_traps: LightTraps
+    glitch_traps: GlitchTraps
+    zombie_traps: ZombieTraps
+    shadow_traps: ShadowTraps

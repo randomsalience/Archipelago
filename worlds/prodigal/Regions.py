@@ -1,4 +1,5 @@
 from BaseClasses import MultiWorld, Region, Entrance
+from .Rules import *
 
 def connect(multiworld: MultiWorld, player: int, source: str, target: str, rule: callable = lambda state: True):
     source_region = multiworld.get_region(source, player)
@@ -8,7 +9,8 @@ def connect(multiworld: MultiWorld, player: int, source: str, target: str, rule:
     source_region.exits.append(entrance)
     entrance.connect(target_region)
 
-def create_and_connect_regions(multiworld: MultiWorld, player: int):
+def create_and_connect_regions(multiworld: MultiWorld, world: "ProdigalWorld"):
+    player = world.player
     multiworld.regions += [Region(name, player, multiworld) for name in region_names]
 
     connect(multiworld, player, "Menu", "Vann's Point")
@@ -18,12 +20,12 @@ def create_and_connect_regions(multiworld: MultiWorld, player: int):
             lambda state: state.has("Climbing Gear", player))
     connect(multiworld, player, "Vann's Point", "Celina's Mine",
             lambda state: state.has("Bandana", player) and
-            ((state.has("Climbing Gear", player) and state.prodigal_can_hit(player)) or
+            ((state.has("Climbing Gear", player) and prodigal_can_hit(state, world)) or
             state.has("Progressive Knuckle", player) and state.has("Lariat", player)))
     connect(multiworld, player, "Vann's Point", "Cursed Grave",
             lambda state: state.has("Cursed Bones", player))
     connect(multiworld, player, "Vann's Point", "Boneyard",
-            lambda state: state.prodigal_can_hit(player))
+            lambda state: prodigal_can_hit(state, world))
     connect(multiworld, player, "Vann's Point", "Tidal Mines",
             lambda state: state.has("Rusty Key", player))
     connect(multiworld, player, "Vann's Point", "Dry Fountain")
@@ -39,23 +41,23 @@ def create_and_connect_regions(multiworld: MultiWorld, player: int):
     connect(multiworld, player, "Vann's Point", "Crystal Caves",
             lambda state: state.has("Progressive Knuckle", player))
     connect(multiworld, player, "Vann's Point", "Haunted Hall",
-            lambda state: state.has("Bone Key", player) and state.prodigal_can_hit(player))
+            lambda state: state.has("Bone Key", player) and prodigal_can_hit(state, world))
     connect(multiworld, player, "Vann's Point", "Siska's Workshop",
             lambda state: state.has("Lariat", player) and
             (state.has("Progressive Pick", player) or state.has("Hallowed Key", player)))
     connect(multiworld, player, "Vann's Point", "Backrooms")
     connect(multiworld, player, "Vann's Point", "Pirate's Pier",
-            lambda state: state.has("Stindle's Map", player) and state.prodigal_can_hit(player))
+            lambda state: state.has("Stindle's Map", player) and prodigal_can_hit(state, world))
     connect(multiworld, player, "Vann's Point", "Lighthouse",
-            lambda state: state.prodigal_has_colors(player, multiworld.colors_required[player]))
+            lambda state: prodigal_has_colors(state, world, world.options.colors_required))
     connect(multiworld, player, "Vann's Point", "Bjerg Castle")
     connect(multiworld, player, "Vann's Point", "Daemon's Dive",
             lambda state: state.has("Progressive Hand", player, 2) and
             state.has("Hallowed Key", player) and state.has("Daemons Key", player))
     connect(multiworld, player, "Vann's Point", "Enlightenment",
-            lambda state: state.prodigal_has_blessings(player, multiworld.blessings_required[player]) and
+            lambda state: prodigal_has_blessings(state, world, world.options.blessings_required) and
             state.has("Climbing Gear", player) and state.has("Progressive Hand", player, 2) and
-            state.prodigal_has_tar(player))
+            prodigal_has_tar(state, world))
 
 region_names = [
     "Menu",
