@@ -1,12 +1,15 @@
 from BaseClasses import CollectionState
 from enum import IntEnum
-from typing import Callable, NamedTuple
+from typing import Callable, NamedTuple, Optional, TYPE_CHECKING
 from .Rules import *
+
+if TYPE_CHECKING:
+    from . import ProdigalWorld
 
 class LocationData(NamedTuple):
     region: str
     name: str
-    code: int
+    code: Optional[int]
     access_rule: Callable[[CollectionState, "ProdigalWorld"], bool]
 
 base_location_data = [

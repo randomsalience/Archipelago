@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from Options import Toggle, Range, Choice, PerGameCommonOptions
-from typing import Dict
+from typing import Dict, List
 
 class SpecificKeys(Toggle):
     """Normal keys are specific to a dungeon. The key count for each dungeon may be found in extra pages in the pause menu. Turn off to make normal keys act like in vanilla. If off, you may need to buy keys from Zaegul."""
@@ -242,3 +242,37 @@ class ProdigalOptions(PerGameCommonOptions):
     glitch_traps: GlitchTraps
     zombie_traps: ZombieTraps
     shadow_traps: ShadowTraps
+
+slot_data_options: List[str] = [
+    "specific_keys",
+    "colors_required",
+    "blessings_required",
+    "crest_fragments_required",
+    "coins_of_crowl_required",
+    "goal",
+    "trading_quest",
+    "shuffle_grelin_drops",
+    "shuffle_hidden_items",
+    "shuffle_bjerg_castle",
+    "shuffle_daemons_dive",
+    "shuffle_enlightenment",
+    "shuffle_secret_shop",
+    "skips_in_logic",
+    "start_with_spiced_ham",
+    "start_with_winged_boots",
+    "skip_one_small_favor",
+    "fake_dread_hand",
+    "fast_fishing",
+    "altar_to_var",
+    "altar_to_zolei",
+    "altar_to_raem",
+    "altar_to_hate",
+    "curse_of_frailty",
+    "curse_of_famine",
+    "curse_of_rust",
+    "curse_of_wind",
+    "curse_of_blooms",
+    "curse_of_crowns",
+    "curse_of_horns",
+    "curse_of_flames",
+]

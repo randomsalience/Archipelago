@@ -1,7 +1,11 @@
 from BaseClasses import MultiWorld, Region, Entrance
+from typing import Callable, TYPE_CHECKING
 from .Rules import *
 
-def connect(multiworld: MultiWorld, player: int, source: str, target: str, rule: callable = lambda state: True):
+if TYPE_CHECKING:
+    from . import ProdigalWorld
+
+def connect(multiworld: MultiWorld, player: int, source: str, target: str, rule: Callable = lambda state: True):
     source_region = multiworld.get_region(source, player)
     target_region = multiworld.get_region(target, player)
     entrance = Entrance(player, f"{source} -> {target}", source_region)
@@ -49,13 +53,13 @@ def create_and_connect_regions(multiworld: MultiWorld, world: "ProdigalWorld"):
     connect(multiworld, player, "Vann's Point", "Pirate's Pier",
             lambda state: state.has("Stindle's Map", player) and prodigal_can_hit(state, world))
     connect(multiworld, player, "Vann's Point", "Lighthouse",
-            lambda state: prodigal_has_colors(state, world, world.options.colors_required))
+            lambda state: prodigal_has_colors(state, world, world.options.colors_required.value))
     connect(multiworld, player, "Vann's Point", "Bjerg Castle")
     connect(multiworld, player, "Vann's Point", "Daemon's Dive",
             lambda state: state.has("Progressive Hand", player, 2) and
             state.has("Hallowed Key", player) and state.has("Daemons Key", player))
     connect(multiworld, player, "Vann's Point", "Enlightenment",
-            lambda state: prodigal_has_blessings(state, world, world.options.blessings_required) and
+            lambda state: prodigal_has_blessings(state, world, world.options.blessings_required.value) and
             state.has("Climbing Gear", player) and state.has("Progressive Hand", player, 2) and
             prodigal_has_tar(state, world))
 
