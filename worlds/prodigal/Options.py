@@ -49,6 +49,43 @@ class Goal(Choice):
     option_any = 4
     default = 0
 
+class ColorLocations(Choice):
+    """Choose where your colors can be found.
+        dungeon_prizes: Colors can be found on dungeon prizes (Vulture, Tidal Frog, Water Blessing, Rat Potion, Wren, Yhote, Spirit of Vann, Ram Wraith, Loomagnos, Earth Blessing, Color Correction, Light Spirit, Stindle, Frozen Heart, Killer, Siska, Mechanized Slot Machine, Inkwell).
+        local: Colors can be found anywhere in your own world.
+        any: Colors can be found in any world."""
+    display_name = "Color Locations"
+    option_dungeon_prizes = 0
+    option_local = 1
+    option_any = 2
+    default = 2
+
+class BlessingLocations(Choice):
+    """Choose where your blessings can be found.
+        dungeon_prizes: Blessings can be found on dungeon prizes (Vulture, Tidal Frog, Water Blessing, Rat Potion, Wren, Yhote, Spirit of Vann, Ram Wraith, Loomagnos, Earth Blessing, Color Correction, Light Spirit, Stindle, Frozen Heart, Killer, Siska, Mechanized Slot Machine, Inkwell).
+        local: Blessings can be found anywhere in your own world.
+        any: Blessings can be found in any world."""
+    display_name = "Blessing Locations"
+    option_dungeon_prizes = 0
+    option_local = 1
+    option_any = 2
+    default = 2
+
+class LighthouseKey(Choice):
+    """Choose where your lighthouse key can be found. (Only applies if Specific Keys is on)
+        blessings: The lighthouse key is obtained when you return the blessings and get the Hero's Soul.
+        coins: The lighthouse key is found underwater behind the door requiring coins of Crowl.
+        materials: The lighthouse key is given to you by Bolivar when you give him the four materials.
+        local: The lighthouse key may be found anywhere in your own world.
+        any: The lighthouse key may be found in any world."""
+    display_name = "Lighthouse Key"
+    option_blessings = 0
+    option_coins = 1
+    option_materials = 2
+    option_local = 3
+    option_any = 4
+    default = 4
+
 class TradingQuest(Choice):
     """How to handle the trading quest.
         vanilla: The Lost Shipment and Ulni checks are randomized. The entire trading quest must be completed as in vanilla to get Ulni's check.
@@ -207,6 +244,9 @@ class ProdigalOptions(PerGameCommonOptions):
     crest_fragments_required: CrestFragmentsRequired
     coins_of_crowl_required: CoinsOfCrowlRequired
     goal: Goal
+    color_locations: ColorLocations
+    blessing_locations: BlessingLocations
+    lighthouse_key: LighthouseKey
     trading_quest: TradingQuest
     shuffle_grelin_drops: ShuffleGrelinDrops
     shuffle_hidden_items: ShuffleHiddenItems

@@ -774,5 +774,32 @@ secret_shop_location_data = [
                  lambda state, world: prodigal_can_reach_zaegul(state, world)),
 ]
 
+heros_soul_location_data = [
+    LocationData("Vann's Point", "Hero's Soul", 249,
+                 lambda state, world: prodigal_has_enough_blessings(state, world) and
+                 state.has("Progressive Hand", world.player, 2) and prodigal_can_hit(state, world)),
+]
+
 all_location_data = base_location_data + grelin_location_data + trade_location_data + hidden_location_data + \
     bjerg_castle_location_data + daemons_dive_location_data + enlightenment_location_data + secret_shop_location_data
+
+dungeon_prize_locations = [
+    "Light Spirit",
+    "Boneyard - Vulture",
+    "Tidal Mines - Tidal Frog",
+    "Tidal Mines - Deep - Water Blessing",
+    "Dry Fountain - Rat Potion",
+    "Crocasino - Wren",
+    "Howling Bjerg - Yhote",
+    "Castle Vann - Spirit of Vann",
+    "Castle Vann - Basement - Ram Wraith",
+    "Magma Heart - Loomagnos",
+    "Magma Heart - Deep - Earth Blessing",
+    "Time Out - Color Correction",
+    "Crystal Caves - East - Stindle",
+    "Crystal Caves - West - Frozen Heart",
+    "Haunted Hall - Killer",
+    "Siska's Workshop - Siska",
+    "Backrooms - Mechanized Slot Machine",
+    "Pirate's Pier - West - Inkwell",
+]

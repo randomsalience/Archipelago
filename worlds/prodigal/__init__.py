@@ -6,7 +6,7 @@ from worlds.generic.Rules import set_rule
 from .Items import *
 from .Locations import *
 from .Regions import create_and_connect_regions
-from .Options import ProdigalOptions, Goal, TradingQuest, slot_data_options
+from .Options import ProdigalOptions, Goal, ColorLocations, BlessingLocations, LighthouseKey, TradingQuest, slot_data_options
 
 prodigal_base_id = 77634425000
 
@@ -77,6 +77,17 @@ class ProdigalWorld(World):
         self.options.start_inventory.value = {}
         if self.options.start_with_winged_boots:
             start_inventory_from_pool.setdefault("Winged Boots", 1)
+        
+        if self.options.color_locations == ColorLocations.option_local:
+            for color in item_name_groups["Color"]:
+                self.multiworld.local_items[self.player].value.add(color)
+        
+        if self.options.blessing_locations == BlessingLocations.option_local:
+            for blessing in item_name_groups["Blessing"]:
+                self.multiworld.local_items[self.player].value.add(blessing)
+        
+        if self.options.lighthouse_key == LighthouseKey.option_local and self.options.specific_keys:
+            self.multiworld.local_items[self.player].value.add("Key (Lighthouse)")
 
     def create_regions(self):
         create_and_connect_regions(self.multiworld, self)
@@ -102,6 +113,8 @@ class ProdigalWorld(World):
             location_data += enlightenment_location_data[-1:]
         if self.options.shuffle_secret_shop:
             location_data += secret_shop_location_data
+        if self.options.lighthouse_key == LighthouseKey.option_blessings and self.options.specific_keys:
+            location_data += heros_soul_location_data
 
         for data in location_data:
             region = self.multiworld.get_region(data.region, self.player)
@@ -136,6 +149,12 @@ class ProdigalWorld(World):
         for item_pool in item_pools:
             for item, count in item_pool.items():
                 num_items += count
+                if item in item_name_groups["Color"] and self.options.color_locations == ColorLocations.option_dungeon_prizes:
+                    continue
+                if item in item_name_groups["Blessing"] and self.options.blessing_locations == BlessingLocations.option_dungeon_prizes:
+                    continue
+                if item == "Key (Lighthouse)" and self.options.lighthouse_key.value not in [LighthouseKey.option_local, LighthouseKey.option_any]:
+                    continue
                 for _ in range(count):
                     self.multiworld.itempool.append(self.create_item_or_trap(item))
         
@@ -162,6 +181,25 @@ class ProdigalWorld(World):
         else:
             self.multiworld.get_location("Torran Defeated", self.player).place_locked_item(Item("Nothing", ItemClassification.filler, None, self.player))
         self.multiworld.completion_condition[self.player] = lambda state: state.has("Victory", self.player)
+
+        dungeon_prizes = []
+        if self.options.color_locations == ColorLocations.option_dungeon_prizes:
+            dungeon_prizes.extend(item_name_groups["Color"])
+        if self.options.blessing_locations == ColorLocations.option_dungeon_prizes:
+            dungeon_prizes.extend(item_name_groups["Blessing"])
+        self.random.shuffle(dungeon_prizes)
+        dungeon_prize_locs = dungeon_prize_locations.copy()
+        self.random.shuffle(dungeon_prize_locs)
+        for i in range(len(dungeon_prizes)):
+            self.multiworld.get_location(dungeon_prize_locs[i], self.player).place_locked_item(self.create_item(dungeon_prizes[i]))
+        
+        if self.options.specific_keys:
+            if self.options.lighthouse_key == LighthouseKey.option_blessings:
+                self.multiworld.get_location("Hero's Soul", self.player).place_locked_item(self.create_item("Key (Lighthouse)"))
+            elif self.options.lighthouse_key == LighthouseKey.option_coins:
+                self.multiworld.get_location("Drowned Gift", self.player).place_locked_item(self.create_item("Key (Lighthouse)"))
+            elif self.options.lighthouse_key == LighthouseKey.option_materials:
+                self.multiworld.get_location("Bolivar", self.player).place_locked_item(self.create_item("Key (Lighthouse)"))
     
     def fill_slot_data(self):
         slot_data = {}
