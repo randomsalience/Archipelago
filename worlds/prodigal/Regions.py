@@ -51,7 +51,7 @@ def create_and_connect_regions(multiworld: MultiWorld, world: "ProdigalWorld"):
             (state.has("Progressive Pick", player) or state.has("Hallowed Key", player)))
     connect(multiworld, player, "Vann's Point", "Backrooms")
     connect(multiworld, player, "Vann's Point", "Pirate's Pier",
-            lambda state: state.has("Stindle's Map", player) and prodigal_can_hit(state, world))
+            lambda state: state.has("Stindles Map", player) and prodigal_can_hit(state, world))
     connect(multiworld, player, "Vann's Point", "Lighthouse",
             lambda state: prodigal_has_colors(state, world, world.options.colors_required.value))
     connect(multiworld, player, "Vann's Point", "Bjerg Castle")

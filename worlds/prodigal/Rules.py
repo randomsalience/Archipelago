@@ -13,7 +13,7 @@ def prodigal_can_reach_zaegul(state: CollectionState, world: "ProdigalWorld") ->
             state.has("Harmonica", world.player) and state.can_reach("Tidal Mines", "Region", world.player)
 
 def prodigal_has_key(state: CollectionState, world: "ProdigalWorld", region: str, count: int) -> bool:
-    return state.has(f"Key ({region})", world.player, count) if world.options.specific_keys.value \
+    return state.has(f"Key ({region})", world.player, count) if world.options.specific_keys \
             else prodigal_can_reach_zaegul(state, world)
 
 def prodigal_has_ice_key(state: CollectionState, world: "ProdigalWorld") -> bool:
