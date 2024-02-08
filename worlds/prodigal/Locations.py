@@ -193,11 +193,11 @@ base_location_data = [
     LocationData("Tidal Mines", "Tidal Mines - Deep - Turtles Chest", 97,
                  lambda state, world: state.has("Progressive Hand", world.player, 2) and
                  state.has("Lariat", world.player) and state.has("Progressive Pick", world.player) and
-                 state.has("Progressive Knuckle", world.player, 2) and prodigal_has_key(state, world, "Tidal Mines", 3)),
+                 state.has("Progressive Knuckle", world.player) and prodigal_has_key(state, world, "Tidal Mines", 3)),
     LocationData("Tidal Mines", "Tidal Mines - Deep - Water Blessing", 230,
                  lambda state, world: state.has("Progressive Hand", world.player, 2) and
                  state.has("Lariat", world.player) and state.has("Progressive Pick", world.player) and
-                 state.has("Progressive Knuckle", world.player, 2) and prodigal_has_key(state, world, "Tidal Mines", 4)),
+                 state.has("Progressive Knuckle", world.player) and prodigal_has_key(state, world, "Tidal Mines", 4)),
     
     LocationData("Dry Fountain", "Dry Fountain - Rust Knuckle Chest", 20,
                  lambda state, world: prodigal_can_hit(state, world) and
