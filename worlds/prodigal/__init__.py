@@ -205,6 +205,7 @@ class ProdigalWorld(World):
         slot_data = {}
         for option_name in slot_data_options:
             slot_data[option_name] = getattr(self.options, option_name).value
+        slot_data["item_on_heros_soul"] = self.options.lighthouse_key == LighthouseKey.option_blessings
         slot_data["seed"] = self.random.randrange(1, 2**31)
         pick_location = self.find_earliest("Progressive Pick")
         if pick_location:
