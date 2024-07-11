@@ -43,7 +43,7 @@ base_location_data = [
     LocationData("Vann's Point", "Near Pond Heart Ore", 145,
                  lambda state, world: state.has("Progressive Pick", world.player)),
     LocationData("Vann's Point", "Near Magma Heart Heart Ore", 144,
-                 lambda state, world: state.has("Progressive_Pick", world.player) and
+                 lambda state, world: state.has("Progressive Pick", world.player) and
                  (state.has("Climbing Gear", world.player) or state.has_all({"Lariat", "Progressive Knuckle"}, world.player))),
     LocationData("Vann's Point", "Tara Reward", 200,
                  lambda state, world: True),
@@ -593,7 +593,7 @@ trade_location_data = [
     LocationData("Colorless Void", "Crelon Trade", 221,
                  lambda state, world: state.has("Giant's Monocle", world.player) and state.has("Lariat", world.player)),
     LocationData("Colorless Void", "Tedra Trade", 222,
-                 lambda state, world: state.has("Forbidden Cookbook", world.player)),
+                 lambda state, world: state.has("Forbidden Book", world.player)),
     LocationData("Colorless Void", "Ulni Trade", 223,
                  lambda state, world: state.has("Kelp Rolls", world.player)),
 ]
