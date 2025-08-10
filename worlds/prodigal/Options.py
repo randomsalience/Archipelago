@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from Options import Toggle, Range, Choice, PerGameCommonOptions
+from Options import Toggle, Range, Choice, PerGameCommonOptions, StartInventoryPool
 from typing import Dict, List
 
 class SpecificKeys(Toggle):
@@ -238,6 +238,7 @@ class ShadowTraps(Toggle):
 
 @dataclass
 class ProdigalOptions(PerGameCommonOptions):
+    start_inventory_from_pool: StartInventoryPool
     specific_keys: SpecificKeys
     colors_required: ColorsRequired
     blessings_required: BlessingsRequired

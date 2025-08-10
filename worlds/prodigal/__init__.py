@@ -70,14 +70,6 @@ class ProdigalWorld(World):
         return self.create_item(name)
 
     def generate_early(self):
-        start_inventory_from_pool = self.multiworld.start_inventory_from_pool.setdefault(self.player, StartInventoryPool({})).value
-        for item_name, count in self.options.start_inventory.value.items():
-            start_inventory_from_pool.setdefault(item_name, 0)
-            start_inventory_from_pool[item_name] += count
-        self.options.start_inventory.value = {}
-        if self.options.start_with_winged_boots:
-            start_inventory_from_pool.setdefault("Winged Boots", 1)
-        
         if self.options.color_locations == ColorLocations.option_local:
             for color in item_name_groups["Color"]:
                 self.multiworld.local_items[self.player].value.add(color)
