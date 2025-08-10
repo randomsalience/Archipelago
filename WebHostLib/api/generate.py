@@ -1,11 +1,11 @@
 import json
-import pickle
 from uuid import UUID
 
 from flask import request, session, url_for
 from markupsafe import Markup
 from pony.orm import commit
 
+from Utils import restricted_dumps
 from WebHostLib import app
 from WebHostLib.check import get_yaml_data, roll_options
 from WebHostLib.generate import get_meta
@@ -20,8 +20,8 @@ def generate_api():
         race = False
         meta_options_source = {}
         if 'file' in request.files:
-            file = request.files['file']
-            options = get_yaml_data(file)
+            files = request.files.getlist('file')
+            options = get_yaml_data(files)
             if isinstance(options, Markup):
                 return {"text": options.striptags()}, 400
             if isinstance(options, str):
@@ -56,7 +56,7 @@ def generate_api():
                     "detail": results}, 400
         else:
             gen = Generation(
-                options=pickle.dumps({name: vars(options) for name, options in gen_options.items()}),
+                options=restricted_dumps({name: vars(options) for name, options in gen_options.items()}),
                 # convert to json compatible
                 meta=json.dumps(meta), state=STATE_QUEUED,
                 owner=session["_id"])
